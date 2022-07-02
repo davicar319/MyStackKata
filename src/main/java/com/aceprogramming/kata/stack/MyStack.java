@@ -16,4 +16,10 @@ public interface MyStack<T> {
             super(e);
         }
     }
+
+    class Overflow extends RuntimeException {
+        Overflow() {
+            super();
+        }
+    }
 }
