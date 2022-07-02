@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 public class MyStackTest {
 
-    private final MyStack stack = new MyStack();
+    private final MyStack<Integer> stack = new MyStack<>();
 
     @Test
     void aNewlyCreatedStackIsEmpty() {

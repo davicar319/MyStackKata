@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class MyStack {
-    private final List<Integer> backingStore;
+public class MyStack<T> {
+    private final List<T> backingStore;
 
     public MyStack() {
         backingStore = new ArrayList<>();
@@ -15,11 +15,11 @@ public class MyStack {
         return backingStore.isEmpty();
     }
 
-    public void push(int i) {
+    public void push(T i) {
         backingStore.add(i);
     }
 
-    public int pop() {
+    public T pop() {
         try {
             return backingStore.remove(topElement());
         } catch(IndexOutOfBoundsException e) {
@@ -27,7 +27,7 @@ public class MyStack {
         }
     }
 
-    public Optional<Integer> top() {
+    public Optional<T> top() {
         return backingStore.isEmpty() ? Optional.empty() : Optional.of(backingStore.get(topElement()));
     }
 
