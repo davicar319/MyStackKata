@@ -5,9 +5,39 @@ import org.junit.jupiter.api.Test;
 
 public class MyStackTest {
 
+    private final MyStack stack = new MyStack();
+
     @Test
     void aNewlyCreatedStackIsEmpty() {
-        var stack = new MyStack();
         Assertions.assertTrue(stack.isEmpty());
     }
+
+    @Test
+    void whenStackIsPushedItIsNoLongerEmpty() {
+        stack.push(1);
+        Assertions.assertFalse(stack.isEmpty());
+    }
+
+    @Test
+    void whenStackIsPushedAndPoppedItIsEmpty() {
+        stack.push(1);
+        stack.pop();
+        Assertions.assertTrue(stack.isEmpty());
+    }
+
+    @Test
+    void whenStackIsPoppedTheLastItemPushedIsReturned() {
+        stack.push(1);
+        stack.push(2);
+        stack.push(3);
+        Assertions.assertEquals(3, stack.pop());
+        Assertions.assertEquals(2, stack.pop());
+        Assertions.assertEquals(1, stack.pop());
+    }
+
+    @Test
+    void poppingAnEmptyStackThrowsAnException() {
+        Assertions.assertThrows(MyStack.Underflow.class, stack::pop);
+    }
+
 }
