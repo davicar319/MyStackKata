@@ -63,9 +63,10 @@ public class MyStackTest {
     }
 
     private static Stream<Arguments> unboundedAndBoundedEmptyStackArguments() {
+        var factory = new MyStackFactory<Integer>();
         return Stream.of(
-                Arguments.of(new UnboundedMyStack<Integer>()),
-                Arguments.of(new BoundedMyStack<Integer>(3))
+                Arguments.of(factory.createStack()),
+                Arguments.of(factory.createStack(3))
         );
     }
 }

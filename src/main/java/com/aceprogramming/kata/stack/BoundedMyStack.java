@@ -2,12 +2,12 @@ package com.aceprogramming.kata.stack;
 
 import java.util.Optional;
 
-public class BoundedMyStack<T> implements MyStack<T> {
+final class BoundedMyStack<T> implements MyStack<T> {
     private final int maximumSize;
     private int currentIndex;
     private final UnboundedMyStack<T> backingStore;
 
-    public BoundedMyStack(int maximumSize) {
+    BoundedMyStack(int maximumSize) {
         this.maximumSize = maximumSize;
         this.backingStore = new UnboundedMyStack<>();
         this.currentIndex = 0;

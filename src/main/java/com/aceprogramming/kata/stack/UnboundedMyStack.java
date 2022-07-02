@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public final class UnboundedMyStack<T> implements MyStack<T> {
+ final class UnboundedMyStack<T> implements MyStack<T> {
     private final List<T> backingStore;
 
-    public UnboundedMyStack() {
+     UnboundedMyStack() {
         backingStore = new ArrayList<>();
     }
 
