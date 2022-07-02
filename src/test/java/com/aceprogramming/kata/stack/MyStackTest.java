@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 public class MyStackTest {
 
-    private final MyStack<Integer> stack = new MyStack<>();
+    private final MyStack<Integer> stack = new UnboundedMyStack<>();
 
     @Test
     void aNewlyCreatedStackIsEmpty() {
@@ -37,7 +37,7 @@ public class MyStackTest {
 
     @Test
     void poppingAnEmptyStackThrowsAnException() {
-        Assertions.assertThrows(MyStack.Underflow.class, stack::pop);
+        Assertions.assertThrows(UnboundedMyStack.Underflow.class, stack::pop);
     }
 
     @Test

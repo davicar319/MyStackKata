@@ -1,41 +1,17 @@
 package com.aceprogramming.kata.stack;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
-public class MyStack<T> {
-    private final List<T> backingStore;
+public interface MyStack<T> {
+    boolean isEmpty();
 
-    public MyStack() {
-        backingStore = new ArrayList<>();
-    }
+    void push(T i);
 
-    public boolean isEmpty() {
-        return backingStore.isEmpty();
-    }
+    T pop();
 
-    public void push(T i) {
-        backingStore.add(i);
-    }
+    Optional<T> top();
 
-    public T pop() {
-        try {
-            return backingStore.remove(topElement());
-        } catch(IndexOutOfBoundsException e) {
-            throw new Underflow(e);
-        }
-    }
-
-    public Optional<T> top() {
-        return backingStore.isEmpty() ? Optional.empty() : Optional.of(backingStore.get(topElement()));
-    }
-
-    private int topElement() {
-        return backingStore.size() - 1;
-    }
-
-    public static class Underflow extends RuntimeException {
+    class Underflow extends RuntimeException {
         Underflow(Throwable e) {
             super(e);
         }
