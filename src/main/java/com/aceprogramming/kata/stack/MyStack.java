@@ -2,6 +2,7 @@ package com.aceprogramming.kata.stack;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class MyStack {
     private final List<Integer> backingStore;
@@ -20,10 +21,18 @@ public class MyStack {
 
     public int pop() {
         try {
-            return backingStore.remove(backingStore.size() - 1);
+            return backingStore.remove(topElement());
         } catch(IndexOutOfBoundsException e) {
             throw new Underflow(e);
         }
+    }
+
+    public Optional<Integer> top() {
+        return backingStore.isEmpty() ? Optional.empty() : Optional.of(backingStore.get(topElement()));
+    }
+
+    private int topElement() {
+        return backingStore.size() - 1;
     }
 
     public static class Underflow extends RuntimeException {

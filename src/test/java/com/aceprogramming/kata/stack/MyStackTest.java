@@ -40,4 +40,17 @@ public class MyStackTest {
         Assertions.assertThrows(MyStack.Underflow.class, stack::pop);
     }
 
+    @Test
+    void theTopOfAnEmptyStackIsEmpty() {
+        Assertions.assertTrue(stack.top().isEmpty());
+    }
+
+    @Test
+    void theTopOfAnEmptyStackIsTheLastThingPushed() {
+        stack.push(1);
+        stack.push(2);
+        stack.push(3);
+        Assertions.assertEquals(3, stack.top().orElseThrow());
+    }
+
 }
